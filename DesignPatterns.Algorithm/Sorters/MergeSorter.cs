@@ -56,7 +56,7 @@ namespace DesignPatterns.Algorithm.Sorters
                 merged[mergedIndex++] = right[rightIndex++];
             }
 
-            return merged.ToString();
+            return new string(merged);
         }
     }
 }

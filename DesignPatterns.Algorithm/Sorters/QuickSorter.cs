@@ -61,6 +61,7 @@ namespace DesignPatterns.Algorithm.Sorters
                     char temp = builder[start];
                     builder[start] = builder[end];
                     builder[end] = temp;
+                    input = builder.ToString();
                 }
                 else
                 {
