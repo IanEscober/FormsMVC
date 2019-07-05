@@ -78,7 +78,6 @@
             this.Cb_Sorting.FormattingEnabled = true;
             this.Cb_Sorting.Items.AddRange(new object[] {
             "Bubble",
-            "Quick",
             "Merge"});
             this.Cb_Sorting.Location = new System.Drawing.Point(108, 85);
             this.Cb_Sorting.Name = "Cb_Sorting";

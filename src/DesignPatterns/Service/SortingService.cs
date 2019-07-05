@@ -30,10 +30,6 @@ namespace DesignPatterns.Service
                     {
                         return new SorterContext(new BubbleSorter());
                     }
-                case nameof(SorterTypes.Quick):
-                    {
-                        return new SorterContext(new QuickSorter());
-                    }
                 case nameof(SorterTypes.Merge):
                     {
                         return new SorterContext(new MergeSorter());
