@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DesignPatterns.View;
+using DesignPatterns.Controller;
 
 namespace DesignPatterns
 {
@@ -17,7 +17,8 @@ namespace DesignPatterns
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DesignPatternsView());
+            var controller = new DesignPatternsController();
+            Application.Run(controller.View);
         }
     }
 }

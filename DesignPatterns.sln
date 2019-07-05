@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns", "src\DesignPatterns\DesignPatterns.csproj", "{C5D44DA8-373E-4FF2-B1DB-95A9776CAB92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Sorting", "DesignPatterns.Algorithm\DesignPatterns.Sorting.csproj", "{6A88505D-F92F-418E-9918-B9C6DE0646CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Sorting", "src\DesignPatterns.Sorting\DesignPatterns.Sorting.csproj", "{6A88505D-F92F-418E-9918-B9C6DE0646CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

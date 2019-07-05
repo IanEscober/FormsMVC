@@ -46,8 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\DesignPatternsController.cs" />
+    <Compile Include="Model\DesignPatternsModel.cs" />
+    <Compile Include="Model\SortEventArgs.cs" />
+    <Compile Include="Parsing\DesignPatternsModelParsing.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\SortingService.cs" />
+    <Compile Include="Validation\DesignPatternsModelValidation.cs" />
+    <Compile Include="ViewManager.cs" />
     <Compile Include="View\DesignPatternsView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,9 +86,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="Model\" />
+    <ProjectReference Include="..\DesignPatterns.Sorting\DesignPatterns.Sorting.csproj">
+      <Project>{6a88505d-f92f-418e-9918-b9c6de0646cd}</Project>
+      <Name>DesignPatterns.Sorting</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
