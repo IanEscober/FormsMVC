@@ -31,7 +31,7 @@ namespace DesignPatterns.Service
                 case SorterTypes.Merge:
                     return new SorterContext(new MergeSorter());
                 default:
-                    throw new Exception("Cannot identify sorting type");
+                    throw new TypeLoadException("Cannot identify sorting type");
             }
         }
     }

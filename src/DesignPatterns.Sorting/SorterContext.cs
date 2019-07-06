@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace DesignPatterns.Sorting
 {
@@ -7,7 +8,7 @@ namespace DesignPatterns.Sorting
         private readonly ISorter _sorter;
 
         public SorterContext(ISorter sorter) =>
-            _sorter = sorter;
+            _sorter = sorter ?? throw new NullReferenceException("Sorter");
         
         public string Sort(string input) =>
             _sorter.Sort(input);

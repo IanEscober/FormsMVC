@@ -23,7 +23,7 @@ namespace DesignPatterns.Controller
             }
             else
             {
-                model.Output = "Input should only contain [A-Z a-z]";
+                model.Output = "Input should only contain [A-Z , a-z]";
             }
 
             CreateView(model);
