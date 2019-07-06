@@ -19,7 +19,9 @@ namespace DesignPatterns.Controller
         {
             if(model.IsValid())
             {
-                model.Output = model.Input.Sort(model.SortType);
+                var input = model.Input;
+                var sortedInput = input.Sort(model.SortType);
+                model.Output = sortedInput;
             }
             else
             {
@@ -32,8 +34,10 @@ namespace DesignPatterns.Controller
 
         private void OnSortEvent(object sender, SortEventArgs args)
         {
+            var currentView = View; // or sender as Forms
             var model = args.Parse();
-            ViewManager.Show(View, SortInput(model));
+            var updatedView = SortInput(model);
+            ViewManager.Show(currentView, updatedView);
         }
 
         private void CreateView(DesignPatternsModel model)

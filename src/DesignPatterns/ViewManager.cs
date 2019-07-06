@@ -5,12 +5,12 @@ namespace DesignPatterns
 {
     public static class ViewManager
     {
-        public static void Show(Form oldform, Form newForm)
+        public static void Show(Form currentView, Form updatedView)
         {
-            oldform.Close();
-            oldform.Dispose();
+            currentView.Close();
+            currentView.Dispose();
 
-            var thread = new Thread(() => Application.Run(newForm));
+            var thread = new Thread(() => Application.Run(updatedView));
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
