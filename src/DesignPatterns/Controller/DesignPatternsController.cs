@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DesignPatterns.View;
+﻿using DesignPatterns.View;
 using DesignPatterns.Model;
 using DesignPatterns.Service;
 using DesignPatterns.Parsing;
 using DesignPatterns.Validation;
-using System.Threading;
 
 namespace DesignPatterns.Controller
 {
@@ -27,6 +20,10 @@ namespace DesignPatterns.Controller
             if(model.IsValid())
             {
                 model.Output = model.Input.Sort(model.SortType);
+            }
+            else
+            {
+                model.Output = "Input should only contain [A-Z a-z]";
             }
 
             CreateView(model);
