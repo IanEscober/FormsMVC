@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Sorting", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Sorting.Tests", "tests\DesignPatterns.Sorting.Tests\DesignPatterns.Sorting.Tests.csproj", "{A50F7D3F-7E3B-439B-A831-6F7FFDC52F53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Tests", "DesignPatterns.Tests\DesignPatterns.Tests.csproj", "{E032890E-FB14-44FC-99D2-80FEDC754749}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Tests", "tests\DesignPatterns.Tests\DesignPatterns.Tests.csproj", "{E032890E-FB14-44FC-99D2-80FEDC754749}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
