@@ -24,16 +24,12 @@ namespace DesignPatterns.Service
 
         private static SorterContext SortContextProvider(SorterTypes sortType)
         {
-            switch (sortType.ToString())
+            switch (sortType)
             {
-                case nameof(SorterTypes.Bubble):
-                    {
-                        return new SorterContext(new BubbleSorter());
-                    }
-                case nameof(SorterTypes.Merge):
-                    {
-                        return new SorterContext(new MergeSorter());
-                    }
+                case SorterTypes.Bubble:
+                    return new SorterContext(new BubbleSorter());
+                case SorterTypes.Merge:
+                    return new SorterContext(new MergeSorter());
                 default:
                     throw new Exception("Cannot identify sorting type");
             }

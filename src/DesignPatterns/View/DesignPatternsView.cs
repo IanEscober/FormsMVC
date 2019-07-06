@@ -20,12 +20,12 @@ namespace DesignPatterns.View
         {
             var input = Tb_Input.Text;
 
-            var selectedSorterText = Cb_Sorting.GetItemText(Cb_Sorting.SelectedItem);
+            var sortTypeIndex = Cb_Sorting.SelectedIndex;
 
             var sortEventArgs = new SortEventArgs
             {
                 Input = input,
-                SortType = selectedSorterText
+                SortTypeIndex = sortTypeIndex
             };
 
             SortEvent(this, sortEventArgs);
