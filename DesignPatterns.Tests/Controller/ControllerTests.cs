@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DesignPatterns.Model;
 using DesignPatterns.Controller;
+using System.Threading.Tasks;
 
 namespace DesignPatterns.Tests.Controller
 {
@@ -18,12 +19,12 @@ namespace DesignPatterns.Tests.Controller
         }
 
         [TestMethod]
-        public void SortInput_Should_Update_View()
+        public async Task SortInput_Should_Update_View()
         {
             var controller = new DesignPatternsController();
             var view = controller.View;
 
-            var result = controller.SortInput(new DesignPatternsModel());
+            var result = await controller.SortInput(new DesignPatternsModel());
 
             Assert.AreNotSame(view, result);
         }

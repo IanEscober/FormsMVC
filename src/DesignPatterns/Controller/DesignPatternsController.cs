@@ -1,4 +1,5 @@
-﻿using DesignPatterns.View;
+﻿using System.Threading.Tasks;
+using DesignPatterns.View;
 using DesignPatterns.Model;
 using DesignPatterns.Service;
 using DesignPatterns.Parsing;
@@ -15,13 +16,13 @@ namespace DesignPatterns.Controller
             CreateView(new DesignPatternsModel());
         }
 
-        public DesignPatternsView SortInput(DesignPatternsModel model)
+        public async Task<DesignPatternsView> SortInput(DesignPatternsModel model)
         {
             if(model.IsValid())
             {
                 var input = model.Input;
-                var sortedInput = input.Sort(model.SortType);
-                model.Output = sortedInput;
+                var sortedInput = input.SortAsync(model.SortType);
+                model.Output = await sortedInput;
             }
             else
             {
@@ -32,11 +33,11 @@ namespace DesignPatterns.Controller
             return View;
         }
 
-        private void OnSortEvent(object sender, SortEventArgs args)
+        private async void OnSortEvent(object sender, SortEventArgs args)
         {
             var currentView = View; // or sender as Forms
             var model = args.Parse();
-            var updatedView = SortInput(model);
+            var updatedView = await SortInput(model);
             ViewManager.Show(currentView, updatedView);
         }
 
