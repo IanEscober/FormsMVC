@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using DesignPatterns.Controller;
+using DesignPatterns.Service;
 
 namespace DesignPatterns
 {
@@ -14,7 +15,10 @@ namespace DesignPatterns
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var controller = new DesignPatternsController();
+
+            var sortingServiceInstance = new SortingService();
+            var controller = new DesignPatternsController(sortingServiceInstance);
+
             Application.Run(controller.View);
         }
     }

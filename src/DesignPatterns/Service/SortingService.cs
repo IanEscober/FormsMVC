@@ -1,28 +1,36 @@
 ﻿using System;
 using System.Threading.Tasks;
+using DesignPatterns.Model;
 using DesignPatterns.Sorting;
 using DesignPatterns.Sorting.Types;
 using DesignPatterns.Sorting.Sorters;
 
 namespace DesignPatterns.Service
 {
-    public static class SortingService
+    public class SortingService : ISortingService
     {
-        public static string Sort(this string input, SorterTypes sortType)
+        private SorterContext _sorterContext;
+
+        public SortingService()
         {
-            var sorter = SortContextProvider(sortType);
-            var output = sorter.Sort(input);
+            _sorterContext = null;
+        }
+
+        public string ApplySorting(DesignPatternsModel model)
+        {
+            _sorterContext = SorterContextProvider(model.SortType);
+            var output = _sorterContext.Sort(model.Input);
             return output;
         }
 
-        public static async Task<string> SortAsync(this string input, SorterTypes sortType)
+        public async Task<string> ApplySortingAsync(DesignPatternsModel model)
         {
-            var sorter = SortContextProvider(sortType);
-            var output = await sorter.SortAsync(input);
+            _sorterContext = SorterContextProvider(model.SortType);
+            var output = await _sorterContext.SortAsync(model.Input);
             return output;
         }
 
-        private static SorterContext SortContextProvider(SorterTypes sortType)
+        private SorterContext SorterContextProvider(SorterTypes sortType)
         {
             switch (sortType)
             {

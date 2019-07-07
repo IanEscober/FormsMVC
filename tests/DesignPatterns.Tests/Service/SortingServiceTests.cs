@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DesignPatterns.Sorting.Types;
+using DesignPatterns.Model;
 using DesignPatterns.Service;
 
 namespace DesignPatterns.Tests.Service
@@ -12,12 +13,14 @@ namespace DesignPatterns.Tests.Service
         [DataRow(SorterTypes.Bubble)]
         [DataRow(SorterTypes.Merge)]
         [DataTestMethod]
-        public void Sort_Should_Sort_Input(SorterTypes sortType)
+        public void ApplySorting_Should_Sort_Input(SorterTypes sortType)
         {
             var value = "bacsdasdwea";
             var expectedValue = "aaabcddessw";
+            var sorter = new SortingService();
+            var model = new DesignPatternsModel { Input = value, SortType = sortType };
 
-            var result = value.Sort(sortType);
+            var result = sorter.ApplySorting(model);
 
             Assert.AreEqual(expectedValue, result);
         }
@@ -25,12 +28,14 @@ namespace DesignPatterns.Tests.Service
         [DataRow(SorterTypes.Bubble)]
         [DataRow(SorterTypes.Merge)]
         [DataTestMethod]
-        public async Task SortAsync_Should_Sort_Input(SorterTypes sortType)
+        public async Task ApplySortingAsync_Should_Sort_Input(SorterTypes sortType)
         {
             var value = "bacsdasdwea";
             var expectedValue = "aaabcddessw";
+            var sorter = new SortingService();
+            var model = new DesignPatternsModel { Input = value, SortType = sortType };
 
-            var result = await value.SortAsync(sortType);
+            var result = await sorter.ApplySortingAsync(model);
 
             Assert.AreEqual(expectedValue, result);
         }
@@ -38,11 +43,13 @@ namespace DesignPatterns.Tests.Service
         [DataRow((SorterTypes)345)]
         [DataRow((SorterTypes)100)]
         [DataTestMethod]
-        public void Sort_WithInvalidSorter_Should_Throw(SorterTypes sortType)
+        public void ApplySorting_WithInvalidSorter_Should_Throw(SorterTypes sortType)
         {
             var value = "bacsdasdwea";
+            var sorter = new SortingService();
+            var model = new DesignPatternsModel { Input = value, SortType = sortType };
 
-            Action act = () => value.Sort(sortType);
+            Action act = () => sorter.ApplySorting(model);
 
             Assert.ThrowsException<TypeLoadException>(act);
         }
@@ -50,11 +57,13 @@ namespace DesignPatterns.Tests.Service
         [DataRow((SorterTypes)345)]
         [DataRow((SorterTypes)100)]
         [DataTestMethod]
-        public async Task SortAsync_WithInvalidSorter_Should_Throw(SorterTypes sortType)
+        public async Task ApplySortingAsync_WithInvalidSorter_Should_Throw(SorterTypes sortType)
         {
             var value = "bacsdasdwea";
+            var sorter = new SortingService();
+            var model = new DesignPatternsModel { Input = value, SortType = sortType };
 
-            var task = Task.Run(() => value.SortAsync(sortType));
+            var task = Task.Run(() => sorter.ApplySortingAsync(model));
 
             await Assert.ThrowsExceptionAsync<TypeLoadException>(() => task);
         }

@@ -52,6 +52,7 @@
     <Compile Include="Parsing\DesignPatternsModelParsing.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\ISortingService.cs" />
     <Compile Include="Service\SortingService.cs" />
     <Compile Include="Validation\DesignPatternsModelValidation.cs" />
     <Compile Include="ViewManager.cs" />

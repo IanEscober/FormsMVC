@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using DesignPatterns.View;
 using DesignPatterns.Model;
 using DesignPatterns.Service;
@@ -9,20 +10,21 @@ namespace DesignPatterns.Controller
 {
     public class DesignPatternsController
     {
+        private readonly ISortingService _sortingService; 
+
         public DesignPatternsView View { get; private set; }
 
-        public DesignPatternsController()
+        public DesignPatternsController(ISortingService sortingService)
         {
+            _sortingService = sortingService ?? throw new NullReferenceException("SortingService");
             CreateView(new DesignPatternsModel());
         }
 
-        public async Task<DesignPatternsView> SortInput(DesignPatternsModel model)
+        public async Task<DesignPatternsView> SortInputAsync(DesignPatternsModel model)
         {
             if(model.IsValid())
             {
-                var input = model.Input;
-                var sortedInput = input.SortAsync(model.SortType);
-                model.Output = await sortedInput;
+                model.Output = await _sortingService.ApplySortingAsync(model); 
             }
             else
             {
@@ -33,18 +35,11 @@ namespace DesignPatterns.Controller
             return View;
         }
 
-        private async void OnSortEvent(object sender, SortEventArgs args)
-        {
-            var currentView = View; // or sender as Forms
-            var model = args.Parse();
-            var updatedView = await SortInput(model);
-            ViewManager.Show(currentView, updatedView);
-        }
-
         private void CreateView(DesignPatternsModel model)
         {
             View = new DesignPatternsView(model);
-            View.SortEvent += OnSortEvent;
+            View.SortEvent += (s,e) =>
+                ViewManager.UpdateViewAsync(View, SortInputAsync, e.Parse());
         }
     }
 }
