@@ -1,4 +1,4 @@
-# Design Patterns
+# FormsMVC
 A concise example on applying the Model-View-Controller (MVC) and Strategy pattern on a legacy Windows Forms application. It accepts a simple string which it sorts in different sorting algorithms. The algorithms are dynamically instatiated with the Strategy pattern. Lastly, the UI is updated with adherence to the MVC pattern.
 
 ## MVC Implementation
@@ -12,14 +12,14 @@ The flow of data on the MVC pattern can be decomposed in several parts:
 ### Implementation Summary
 | Concept       | Implementation                             |
 | ------------- | ------------------------------------------ | 
-| Binding       | [View Constructor](https://github.com/IanEscober/DesignPatterns/blob/master/src/DesignPatterns/View/DesignPatternsView.cs)                   |
-| Calling       | [Events](https://github.com/IanEscober/DesignPatterns/blob/master/src/DesignPatterns/View/DesignPatternsView.cs)                                       |
-| Parsing       | [Custom Parsing](https://github.com/IanEscober/DesignPatterns/blob/master/src/DesignPatterns/Parsing/DesignPatternsModelParsing.cs)        |
-| Validating    | [Custom Validation](https://github.com/IanEscober/DesignPatterns/blob/master/src/DesignPatterns/Validation/DesignPatternsModelValidation.cs)  |
-| Returning     | [ViewManager](https://github.com/IanEscober/DesignPatterns/blob/master/src/DesignPatterns/ViewManager.cs)                                              |
+| Binding       | [View Constructor](https://github.com/IanEscober/FormsMVC/blob/master/src/FormsMVC/View/FormsMVCView.cs)                   |
+| Calling       | [Events](https://github.com/IanEscober/FormsMVC/blob/master/src/FormsMVC/View/FormsMVCView.cs)                                       |
+| Parsing       | [Custom Parsing](https://github.com/IanEscober/FormsMVC/blob/master/src/FormsMVC/Parsing/FormsMVCModelParsing.cs)        |
+| Validating    | [Custom Validation](https://github.com/IanEscober/FormsMVC/blob/master/src/FormsMVC/Validation/FormsMVCModelValidation.cs)  |
+| Returning     | [ViewManager](https://github.com/IanEscober/FormsMVC/blob/master/src/FormsMVC/ViewManager.cs)                                              |
 
 ### ViewManager
-The [ViewManager](https://github.com/IanEscober/DesignPatterns/blob/master/src/DesignPatterns/ViewManager.cs) is the core of the MVC implementation. It enables the Views to be updated by closing the stale View with an updated View through an updater function.
+The [ViewManager](https://github.com/IanEscober/FormsMVC/blob/master/src/FormsMVC/ViewManager.cs) is the core of the MVC implementation. It enables the Views to be updated by closing the stale View with an updated View through an updater function.
 ```csharp
 public static void UpdateView<T, U>(Form currentView, Func<T,U> updater, T model)
 {
@@ -42,4 +42,4 @@ public static void Update(Form currentView, Form updatedView)
 Yeet a Pull Request
 
 ## License
-[MIT](https://github.com/IanEscober/DesignPatterns/blob/master/LICENSE)
+[MIT](https://github.com/IanEscober/FormsMVC/blob/master/LICENSE)
